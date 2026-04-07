@@ -2,71 +2,53 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nandini Sandha - Presentation</title>
 <style>
-  body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center; flex-direction: column; background: #000; overflow: hidden; }
+  body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column; background: #000; overflow: hidden; }
 
-  /* Profile Logo Center - Full Screen Friendly */
-  .logo-wrapper { position: relative; width: 220px; height: 220px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; }
-  .neon-ring { position: absolute; width: 220px; height: 220px; border-radius: 50%; border: 5px solid transparent; border-top: 5px solid #00ff00; border-bottom: 5px solid #ffff00; animation: rotate 2s linear infinite; }
+  /* Profile Logo Size */
+  .logo-wrapper { position: relative; width: 200px; height: 200px; display: flex; justify-content: center; align-items: center; margin: 0 auto; }
+  .neon-ring { position: absolute; width: 200px; height: 200px; border-radius: 50%; border: 4px solid transparent; border-top: 4px solid #00ff00; border-bottom: 4px solid #ffff00; animation: rotate 2s linear infinite; }
   @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-  .logo-inner { background: #000; padding: 8px; border-radius: 50%; z-index: 2; }
-  .logo { border-radius: 50%; display: block; width: 200px; height: 200px; }
+  .logo-inner { background: #000; padding: 5px; border-radius: 50%; z-index: 2; }
+  .logo { border-radius: 50%; display: block; width: 180px; height: 180px; }
 
-  /* Realistic Falling Elements (Leaves + Petals) */
-  .petal { position: absolute; top: -10%; z-index: 1; animation: fall linear infinite; pointer-events: none; }
-  @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
-
-  .container { text-align: center; color: #fff; z-index: 2; width: 100%; display: flex; flex-direction: column; align-items: center; }
-  .presented { font-size:28px; color:#aaa; margin-top:10px; }
-  .student-name { font-size: 56px; font-weight:bold; color: #00ffff; text-shadow: 0 0 20px #00ffff; margin-top:10px; }
-  .rollno { font-size: 36px; color:#ff00ff; margin-top:5px; }
-  .slide-button { margin-top:40px; padding:20px 50px; font-size:24px; background: transparent; color:white; border: 3px solid #00ffff; border-radius:50px; cursor:pointer; transition: 0.3s; }
-  .slide-button:hover { background: #00ffff; color: #000; box-shadow: 0 0 30px #00ffff; }
-
-  /* Modal */
-  .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:9999; }
-  .modal iframe { width: 100%; height: 100%; border: none; }
-  
+  /* Birds Animation */
   .bird-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 20000; pointer-events: none; }
   .bird-flock { position: absolute; width: 400px; height: 300px; background: url('https://i.postimg.cc/J42XXM0P/Picsart-26-04-07-08-49-48-603.png') no-repeat; background-size: contain; opacity: 0; }
-  
+
   @keyframes flyUp { 0% { transform: translate(-300px, 100vh) scale(0.5); opacity: 0; } 20% { opacity: 1; } 100% { transform: translate(110vw, -40vh) scale(1.5); opacity: 0; } }
   @keyframes flyDown { 0% { transform: translate(110vw, 100vh) scale(0.5) scaleX(-1); opacity: 0; } 20% { opacity: 1; } 100% { transform: translate(-300px, -40vh) scale(1.5) scaleX(-1); opacity: 0; } }
 
-  .watermark-blocker { position: absolute; bottom: 0; right: 0; width: 200px; height: 50px; background: #000; z-index: 10000; }
-  .close-btn { position:absolute; top:20px; right:30px; font-size:50px; color:white; cursor:pointer; z-index:20001; }
+  .petal { position: absolute; top: -10%; z-index: 1; animation: fall linear infinite; }
+  @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+
+  .container { text-align: center; color: #fff; z-index: 2; width: 100%; }
+  .presented { font-size:24px; color:#aaa; margin-top:20px; }
+  .student-name { font-size: 48px; font-weight:bold; color: #00ffff; text-shadow: 0 0 15px #00ffff; }
+  .rollno { font-size: 30px; color:#ff00ff; }
+  .slide-button { margin-top:30px; padding:15px 40px; font-size:20px; background: transparent; color:white; border: 2px solid #00ffff; border-radius:50px; cursor:pointer; transition: 0.3s; }
+  .slide-button:hover { background: #00ffff; color: #000; box-shadow: 0 0 20px #00ffff; }
+
+  /* Modal Settings */
+  .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:9999; }
+  .modal iframe { width: 100%; height: 100vh; border: none; display: block; }
+  
+  /* Black block to cover branding (Position aur niche ki gayi) */
+  .watermark-blocker { 
+    position: absolute; 
+    bottom: 10px; 
+    right: 0; 
+    width: 170px; 
+    height: 45px; 
+    background: #000; 
+    z-index: 10000; 
+  }
+  
+  .close-btn { position:absolute; top:10px; right:20px; font-size:40px; color:white; cursor:pointer; z-index:20001; }
 </style>
 </head>
 <body>
-
-<script>
-  // Leaves + Petals
-  const items = ['🍃', '🌿', '🍂', '🍁', '🌸', '🌺', '🌼'];
-  for(let i=0; i<20; i++) {
-    let p = document.createElement('div');
-    p.innerHTML = items[Math.floor(Math.random() * items.length)];
-    p.className = 'petal';
-    p.style.left = Math.random() * 100 + 'vw';
-    p.style.animationDuration = (Math.random() * 7 + 7) + 's';
-    p.style.fontSize = (Math.random() * 25 + 20) + 'px';
-    document.body.appendChild(p);
-  }
-
-  function startBirdAnimation() {
-    const overlay = document.getElementById('birdOverlay');
-    function fly(type) {
-      let b = document.createElement('div');
-      b.className = 'bird-flock';
-      b.style.animation = type + ' 15s linear forwards'; 
-      overlay.appendChild(b);
-      setTimeout(() => b.remove(), 15000);
-    }
-    fly('flyUp');
-    setTimeout(() => fly('flyDown'), 7000);
-  }
-</script>
 
 <div class="container">
   <div class="logo-wrapper">
@@ -84,17 +66,41 @@
 <div class="modal" id="presentationModal">
   <span class="close-btn" onclick="closePresentation()">&times;</span>
   <div class="bird-overlay" id="birdOverlay"></div>
+  <!-- Black block to cover watermark only -->
   <div class="watermark-blocker"></div>
   <iframe id="presentationIframe" src="https://www.canva.com/design/DAHF_se9VuY/CvaQDdawIDvohWqjbX8OXQ/view?embed" allowfullscreen></iframe>
 </div>
 
 <script>
-function openPresentation() {
-  document.getElementById('presentationModal').style.display = 'block';
-  startBirdAnimation();
-  setInterval(startBirdAnimation, 18000); 
-}
-function closePresentation() { location.reload(); }
+  const items = ['🍃', '🌿', '🍂', '🍁'];
+  for(let i=0; i<15; i++) {
+    let p = document.createElement('div');
+    p.innerHTML = items[Math.floor(Math.random() * items.length)];
+    p.className = 'petal';
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.animationDuration = (Math.random() * 5 + 5) + 's';
+    document.body.appendChild(p);
+  }
+
+  function startBirdAnimation() {
+    const overlay = document.getElementById('birdOverlay');
+    function fly(type) {
+      let b = document.createElement('div');
+      b.className = 'bird-flock';
+      b.style.animation = type + ' 15s linear forwards'; 
+      overlay.appendChild(b);
+      setTimeout(() => b.remove(), 15000);
+    }
+    fly('flyUp');
+    setTimeout(() => fly('flyDown'), 7000);
+  }
+
+  function openPresentation() {
+    document.getElementById('presentationModal').style.display = 'block';
+    startBirdAnimation();
+    setInterval(startBirdAnimation, 18000); 
+  }
+  function closePresentation() { location.reload(); }
 </script>
 
 </body>
