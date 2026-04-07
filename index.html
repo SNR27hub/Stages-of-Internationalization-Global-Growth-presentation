@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nandini Sandha - Presentation</title>
 <style>
   body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column; background: #000; overflow: hidden; }
@@ -23,29 +24,38 @@
   .petal { position: absolute; top: -10%; z-index: 1; animation: fall linear infinite; }
   @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 
-  .container { text-align: center; color: #fff; z-index: 2; width: 100%; }
+  .container { text-align: center; color: #fff; z-index: 2; width: 90%; }
   .presented { font-size:24px; color:#aaa; margin-top:20px; }
-  .student-name { font-size: 48px; font-weight:bold; color: #00ffff; text-shadow: 0 0 15px #00ffff; }
-  .rollno { font-size: 30px; color:#ff00ff; }
+  .student-name { font-size: 40px; font-weight:bold; color: #00ffff; text-shadow: 0 0 15px #00ffff; }
+  .rollno { font-size: 24px; color:#ff00ff; }
   .slide-button { margin-top:30px; padding:15px 40px; font-size:20px; background: transparent; color:white; border: 2px solid #00ffff; border-radius:50px; cursor:pointer; transition: 0.3s; }
-  .slide-button:hover { background: #00ffff; color: #000; box-shadow: 0 0 20px #00ffff; }
-
+  
   /* Modal Settings */
   .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:9999; }
   .modal iframe { width: 100%; height: 100vh; border: none; display: block; }
   
-  /* Black block to cover branding (Position aur niche ki gayi) */
+  /* Responsive Watermark Blocker */
   .watermark-blocker { 
     position: absolute; 
-    bottom: 10px; 
+    bottom: 5px; 
     right: 0; 
-    width: 170px; 
-    height: 45px; 
+    width: 150px; 
+    height: 40px; 
     background: #000; 
-    z-index: 10000; 
+    z-index: 10000;
+    pointer-events: auto; 
   }
   
   .close-btn { position:absolute; top:10px; right:20px; font-size:40px; color:white; cursor:pointer; z-index:20001; }
+
+  /* Mobile screen adjustment */
+  @media (max-width: 600px) {
+    .student-name { font-size: 28px; }
+    .logo-wrapper { width: 150px; height: 150px; }
+    .neon-ring { width: 150px; height: 150px; }
+    .logo { width: 130px; height: 130px; }
+    .watermark-blocker { width: 120px; height: 35px; }
+  }
 </style>
 </head>
 <body>
@@ -66,7 +76,6 @@
 <div class="modal" id="presentationModal">
   <span class="close-btn" onclick="closePresentation()">&times;</span>
   <div class="bird-overlay" id="birdOverlay"></div>
-  <!-- Black block to cover watermark only -->
   <div class="watermark-blocker"></div>
   <iframe id="presentationIframe" src="https://www.canva.com/design/DAHF_se9VuY/CvaQDdawIDvohWqjbX8OXQ/view?embed" allowfullscreen></iframe>
 </div>
@@ -104,4 +113,4 @@
 </script>
 
 </body>
-</html>
+</html>p
